@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!--
+		-->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Webapp Base</title>
+		<meta name="description" content="Webapp Base Template">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<meta name="author" content="Mobidemia">
+
+		<link rel="stylesheet" href="assets/app.css" media="screen" />
+	</head>
+	<body role="application">
+		<script src="assets/loader.js"></script>
+		<script src="assets/app.js"></script>
+		<script>
+			loader.require('webapp/main');
+		</script>
+	</body>
+
+
+	<script type="text/x-handlebars">
+		{{outlet}}
+	</script>
+
+	<script type="text/x-handlebars" id='t-layout'>
+		<nav id="header" class="navbar navbar-inverse navbar-fixed-top">
+		{{outlet header}}
+		{{outlet navbar}}
+		</nav>
+
+
+		<div id="main" class="container">
+		<div class="row-fluid wrap">
+		{{outlet sidemenu}}
+
+		<section class="well span12" id="body-container">
+		{{debugger}}
+		{{log record}}
+		{{outlet content}}
+		</section>
+		</div>
+		</div>
+
+		{{outlet footer}}
+
+	</script>
+
+</html>
