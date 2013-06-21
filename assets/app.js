@@ -7,7 +7,7 @@ loader.register('webapp/templates', function(require) {
     Ember.TEMPLATES['templates/themes/mobile/layout/header'] = Ember.Handlebars.compile("\t\t<div class=\"row-fluid\">\n\t\t<div class=\"span4 sidemenu-header\"></div>\n\t\t<div class=\"navbar-inner span12\">\n\t\t<div class=\"container\">\n\t\t<div class=\"row-fluid\">\n\t\t<div class=\"span1 button-column\">\n\t\t<button type=\"button\" class=\"side-menu-link nav-button\" id=\"btn-header-nav\">\n\t\t<i class=\"icon-menu\"></i>\n\t\t</button>\n\t\t</div>\n\t\t<div class=\"span8 header-title\">\n\t\t<h4>{{App.NAME}}</h4>\n\t\t</div>\n\n\t\t</div>\n\t\t</div>\n\t\t</div>\n\t\t</div>\n");
     Ember.TEMPLATES['templates/themes/mobile/layout/layout'] = Ember.Handlebars.compile("\t\t<nav id=\"header\" class=\"navbar navbar-inverse navbar-fixed-top\">\n\t\t{{outlet header}}\n\t\t{{outlet navbar}}\n\t\t</nav>\n\n\n\t\t<div id=\"main\" class=\"container\">\n\t\t<div class=\"row-fluid wrap\">\n\t\t{{outlet sidemenu}}\n\n\t\t<section class=\"well span12\" id=\"body-container\">\n\t\t{{debugger}}\n\t\t{{log record}}\n\t\t{{outlet content}}\n\t\t</section>\n\t\t</div>\n\t\t</div>\n\n\t\t{{outlet footer}}\n");
     Ember.TEMPLATES['templates/themes/mobile/layout/navbar'] = Ember.Handlebars.compile("\t\t<div id=\"nav-bar\" class=\"row-fluid black items-2\">\n\t\t<ul>\n\t\t<li class=\"active\">\n\t\t<a data-id=\"1\" href=\"javascript:void(0)\"><i class=\"icon-star\"></i> <span>Dark Navbar</span></a>\n\t\t</li>\n\t\t<li>\n\t\t<a data-id=\"2\" href=\"javascript:void(0)\"><i class=\"icon-star-empty\"></i> <span>Light Navbar</span></a>\n\t\t</li>\n\t\t<li class=\"hide\">\n\t\t<a data-id=\"3\" href=\"javascript:void(0)\"><i class=\"icon-user\"></i> <span>User</span></a>\n\t\t</li>\n\t\t</ul>\n\t\t</div>\n");
-    Ember.TEMPLATES['templates/themes/mobile/layout/sidemenu'] = Ember.Handlebars.compile("\t\t<aside id=\"side-menu\" role=\"navigation\" class=\"well span4 oc\">\n\t\t<!--Sidebar content-->\n\n\t\t<ul class=\"nav nav-list\">\n\n\t\t<li class=\"navigation page\">\n\t\t<a data-trans=\"fade\" href=\"./navigation.html\"><i class=\"icon-layout\"></i><i class=\"icon-right-open\"></i> Navigation</a>\n\t\t</li>\n\t\t<li class=\"list page\">\n\t\t<a data-trans=\"flip\" href=\"./list.html\"><i class=\"icon-list\"></i><i class=\"icon-right-open\"></i> List</a>\n\t\t</li>\n\t\t<li class=\"elements page\">\n\t\t<a data-trans=\"sl\" href=\"./elements.html\"><i class=\"icon-info-circled\"></i><i class=\"icon-right-open\"></i> Elements</a>\n\t\t</li>\n\t\t<li class=\"settings\">\n\t\t<a href=\"javascript:void(0)\"><i class=\"icon-cog\"></i><i class=\"icon-right-open\"></i> Settings</a>\n\t\t</li>\n\t\t<li class=\"help\">\n\t\t<a href=\"javascript:void(0)\"><i class=\"icon-help\"></i><i class=\"icon-right-open\"></i> Help</a>\n\t\t</li>\n\t\t<li class=\"logout\">\n\t\t<a href=\"javascript:void(0);\" id=\"btn-logout\"><i class=\"icon-ccw\"></i>Logout</a>\n\t\t</li>\n\t\t</ul>\n\t\t</aside>\n");
+    Ember.TEMPLATES['templates/themes/mobile/layout/sidemenu'] = Ember.Handlebars.compile("<aside id=\"side-menu\" role=\"navigation\" class=\"well span4 oc\">\n\t<!--Sidebar content-->\n\n\t<ul class=\"nav nav-list\">\n\n\t\t<li class=\"navigation page\">\n\t\t\t{{#linkTo apps.go App.Context.default_app}}\n\t\t\t<i class=\"icon-layout\"></i><i class=\"icon-right-open\"></i> {{App.Context.default_app.name}}</a>\n\t\t\t{{/linkTo}}\n\t\t</li>\n\t\t<li class=\"list page\">\n\t\t\t{{#linkTo apps.go App.Context.default_app}}\n\t\t\t<i class=\"icon-list\"></i><i class=\"icon-right-open\"></i> List</a>\n\t\t\t{{/linkTo}}\n\t\t</li>\n\t\t<li class=\"elements page\">\n\t\t\t<a href=\"javascript:void(0)\"><i class=\"icon-info-circled\"></i><i class=\"icon-right-open\"></i> Elements</a>\n\t\t</li>\n\t\t<li class=\"settings\">\n\t\t\t<a href=\"javascript:void(0)\"><i class=\"icon-cog\"></i><i class=\"icon-right-open\"></i> Settings</a>\n\t\t</li>\n\t\t<li class=\"help\">\n\t\t\t{{#linkTo apps.go App.Apps.help}}\n\t\t\t<i class=\"icon-help\"></i><i class=\"icon-right-open\"></i> {{App.Apps.help.name}}</a>\n\t\t\t{{/linkTo}}\n\t\t</li>\n\t\t<li class=\"logout\">\n\t\t\t<a href=\"javascript:void(0);\" id=\"btn-logout\"><i class=\"icon-ccw\"></i>Logout</a>\n\t\t</li>\n\t</ul>\n</aside>\n");
 });
 
 loader.register('jquery', function(require) {
@@ -124861,7 +124861,7 @@ loader.register('webapp/apps/_home/_home', function(require) {
 App.Apps.home = App.App.create({
 	id : '_home',
 	name : 'Home',
-	visible : true,
+	visible : false,
 });
 
 App.Context.Apps[App.Apps.home.id] = App.Apps.home;
@@ -124948,8 +124948,6 @@ require('webapp/platform/plaftorm');
 require('webapp/apps/_home/_home');
 require('webapp/apps/help/help');
 require('webapp/apps/hp12c/hp12c');
-
-
 
 
 //Configure Context
