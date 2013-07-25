@@ -1,3 +1,7 @@
+Deprecated
+-------
+see https://github.com/MobileWebApps/webapp-node-ember
+
 
 PROJECT DESCRIPTION
 ====================================
